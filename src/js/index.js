@@ -5,7 +5,7 @@ const selectEl = document.querySelector('.breed-select');
 const infoEl = document.querySelector('.cat-info');
 
 let breedsList = '';
-// let breedName = ''
+let breedName = ''
 
 fetchBreeds().then(data => {
   console.log(data)
@@ -17,14 +17,15 @@ fetchBreeds().then(data => {
 
 const fetchCat = breedId => {
   console.log(breedId)
-  fetchCatByBreed(breedId).then(data => {
+  fetchCatByBreed().then(data => {
     console.log(data);
     data.forEach(el => {
-
+breedName += `${el.id}`
     });
+    infoEl.innerHTML= fetchCat(e.target.value);
   });
 };
 
 
 
-selectEl.addEventListener('change', (e => (fetchCat(e.target.value))));
+selectEl.addEventListener('change', fetchCat);
