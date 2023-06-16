@@ -13,7 +13,7 @@ export const fetchBreeds = () =>
 
 export const fetchCatByBreed = breedId =>
   fetch(
-    `${BASE_URL}/images/search?breeds_id=${breedId}&api_key=${API_KEY}, `
+    `${BASE_URL}/images/search?breeds_id=${breedId}&api_key=${API_KEY}&has_breeds=1, `
   ).then(result => {
     if (!result.ok) {
       throw new Error(result.status);
