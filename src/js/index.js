@@ -6,16 +6,16 @@ const selectEl = document.querySelector('.breed-select');
 const infoEl = document.querySelector('.cat-info');
 const loaderText = document.querySelector('.loader');
 
-
 loaderText.classList.add("invisible");
 
 
-function fillList() {
-  loaderText.classList.remove("invisible");
+fillList(); 
 
+function fillList() {
+  
+  loaderText.classList.remove("invisible");
   fetchBreeds()
     .then((data) => {
-      
       const breedList = data.map((item) => ({ name: item.name, id: item.id }));
       selectEl.insertAdjacentHTML('afterbegin', breedList.map(({ id, name }) =>
         `<option value = "${id}">${name}</option>`)
@@ -24,11 +24,10 @@ function fillList() {
     .catch(() =>
       Notiflix.Notify.failure('Oops! Something went wrong! Try reloading the page!')
   );
-  
+  selectEl.classList.remove('invisible');
   loaderText.classList.add("invisible");
 };
 
-fillList();
 
 selectEl.addEventListener('change', () => {
   selectEl.classList.add('invisible');
@@ -73,3 +72,4 @@ function createCatCard(cats, title) {
 function clearCatCard() {
   infoEl.innerHTML = '';
 };
+
