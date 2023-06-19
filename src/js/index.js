@@ -6,27 +6,27 @@ const selectEl = document.querySelector('.breed-select');
 const infoEl = document.querySelector('.cat-info');
 const loaderText = document.querySelector('.loader');
 
-loaderText.classList.add("invisible");
-
+// loaderText.classList.add("invisible");
 
 fillList(); 
 
 function fillList() {
   
-  loaderText.classList.remove("invisible");
+  // loaderText.classList.remove("invisible");
   fetchBreeds()
     .then((data) => {
       const breedList = data.map((item) => ({ name: item.name, id: item.id }));
       selectEl.insertAdjacentHTML('afterbegin', breedList.map(({ id, name }) =>
         `<option value = "${id}">${name}</option>`)
         .join(''));
-        selectEl.classList.remove('invisible');
+      selectEl.classList.remove('invisible');
+      //  loaderText.classList.add('invisible');
     })
     .catch(() =>
       Notiflix.Notify.failure('Oops! Something went wrong! Try reloading the page!')
   );
 
-  loaderText.classList.add("invisible");
+ 
 };
 
 
