@@ -7,14 +7,15 @@ const infoEl = document.querySelector('.cat-info');
 const loaderText = document.querySelector('.loader');
 
 
-// loaderText.classList.add("invisible");
+loaderText.classList.add("invisible");
 
 
 function fillList() {
-  // loaderText.classList.remove("invisible");
+  loaderText.classList.remove("invisible");
 
   fetchBreeds()
     .then((data) => {
+      
       const breedList = data.map((item) => ({ name: item.name, id: item.id }));
       selectEl.insertAdjacentHTML('afterbegin', breedList.map(({ id, name }) =>
         `<option value = "${id}">${name}</option>`)
@@ -30,7 +31,7 @@ function fillList() {
 fillList();
 
 selectEl.addEventListener('change', () => {
-  
+  selectEl.classList.add('invisible');
   loaderText.classList.remove("invisible");
 
   clearCatCard();
@@ -39,10 +40,12 @@ selectEl.addEventListener('change', () => {
     
   fetchCatByBreed(value)
     .then(catData => {
+      selectEl.classList.remove('invisible');
       loaderText.classList.add("invisible");
       createCatCard(catData, name); 
   })
     .catch(() => {
+      selectEl.classList.remove('invisible');
       loaderText.classList.add("invisible");
       Notiflix.Notify.failure('Oops! Something went wrong! Try reloading the page!')
     })
