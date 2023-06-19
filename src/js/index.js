@@ -20,11 +20,12 @@ function fillList() {
       selectEl.insertAdjacentHTML('afterbegin', breedList.map(({ id, name }) =>
         `<option value = "${id}">${name}</option>`)
         .join(''));
+        selectEl.classList.remove('invisible');
     })
     .catch(() =>
       Notiflix.Notify.failure('Oops! Something went wrong! Try reloading the page!')
   );
-  selectEl.classList.remove('invisible');
+
   loaderText.classList.add("invisible");
 };
 
