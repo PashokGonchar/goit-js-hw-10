@@ -20,7 +20,7 @@ function fillList() {
         `<option value = "${id}">${name}</option>`)
         .join(''));
       selectEl.classList.remove('invisible');
-      //  loaderText.classList.add('invisible');
+       loaderText.classList.add('invisible');
     })
     .catch(() =>
       Notiflix.Notify.failure('Oops! Something went wrong! Try reloading the page!')
