@@ -7,11 +7,11 @@ const infoEl = document.querySelector('.cat-info');
 const loaderText = document.querySelector('.loader');
 
 
-loaderText.classList.add("invisible");
+// loaderText.classList.add("invisible");
 
 
 function fillList() {
-  loaderText.classList.remove("invisible");
+  // loaderText.classList.remove("invisible");
 
   fetchBreeds()
     .then((data) => {
