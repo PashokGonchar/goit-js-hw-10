@@ -25,13 +25,11 @@ function fillList() {
     .catch(() =>
       Notiflix.Notify.failure('Oops! Something went wrong! Try reloading the page!')
   );
-
- 
 };
 
 
 selectEl.addEventListener('change', () => {
-  selectEl.classList.add('invisible');
+
   loaderText.classList.remove("invisible");
 
   clearCatCard();
@@ -40,12 +38,10 @@ selectEl.addEventListener('change', () => {
     
   fetchCatByBreed(value)
     .then(catData => {
-      selectEl.classList.remove('invisible');
       loaderText.classList.add("invisible");
       createCatCard(catData, name); 
   })
     .catch(() => {
-      selectEl.classList.remove('invisible');
       loaderText.classList.add("invisible");
       Notiflix.Notify.failure('Oops! Something went wrong! Try reloading the page!')
     })
